@@ -1,6 +1,5 @@
-// To run this file, call
-// ./node_modules/.bin/ts-node server/data/generator/generate.ts [count] [seed] > server/data/orders.json
-
+import * as fs from 'fs';
+import * as path from 'path';
 import { generateRandomOrders } from './generate-random-orders';
 
 const args = process.argv;
@@ -17,4 +16,10 @@ const getNumericArg = (index: number, defaultValue: number) => {
 const count = getNumericArg(0, 10);
 const seed = getNumericArg(1, undefined);
 
-console.log(JSON.stringify(generateRandomOrders(count, seed), null, '  '));
+console.log(`Generating ${count} orders` + (typeof seed !== 'undefined' ? ` with seed ${seed}` : ''));
+const data = generateRandomOrders(count, seed);
+
+console.log('Writing to orders.json...');
+
+fs.writeFileSync(path.join(__dirname, '../orders.json'), data);
+console.log('Done!');
