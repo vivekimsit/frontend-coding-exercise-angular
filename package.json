@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "ts-node server/data/generator/generate.ts 2000 313",
+    "postinstall": "ts-node generator/generate.ts 2000 313",
     "ng": "ng",
     "start": "concurrently \"yarn server\" \"ng serve\" --names server,client --prefix-colors yellow,blue",
     "server": "nodemon --exec \"ts-node\" server/server.ts --ext ts,json --watch server",

@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.scss']
 })
-export class OrderListComponent {}
+export class OrderListComponent {
+
+  // TODO: Implement me
+
+}

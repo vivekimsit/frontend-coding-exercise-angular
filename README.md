@@ -10,12 +10,22 @@ appropriate format.
 # Setup
 yarn install
 
-# Live development server
+# Live-reloading development server at localhost:4200 and localhost:4300
 yarn start
 ```
+
+## API
+The API is accessible at `http://localhost:4300`.
+
+The orders are accessible under the `/orders` endpoint which takes an
+optional `page` parameter, starting at 1.
 
 ## Running Tests
 ```
 yarn test
 ```
-This runs tests for the frontend. Tests for the backend are not required.
+This runs tests for the frontend.
+
+Tests for the backend are not required.
+
+E2E tests are out of scope.

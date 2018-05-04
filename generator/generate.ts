@@ -21,5 +21,5 @@ const data = generateRandomOrders(count, seed);
 
 console.log('Writing to orders.json...');
 
-fs.writeFileSync(path.join(__dirname, '../orders.json'), data);
+fs.writeFileSync(path.join(__dirname, '../server/data/orders.json'), JSON.stringify(data));
 console.log('Done!');

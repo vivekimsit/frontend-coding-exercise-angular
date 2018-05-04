@@ -11,6 +11,14 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get('/', (req, res) => {
+  res.send('');
+});
+
+/**
+ * Fetches a list of orders, paginated.
+ * Parameters: page (number) the current page, starting at 1.
+ */
 app.get('/orders', (req, res) => {
   const page = req.query.page ? Math.max(1, req.query.page) : 1;
 
