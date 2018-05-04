@@ -4,11 +4,10 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently \"ts-node server/server.ts\" \"ng serve\" --names server,client --prefix-colors white,blue",
-    "build": "ng build --prod",
+    "start": "concurrently \"yarn server\" \"ng serve\" --names server,client --prefix-colors yellow,blue",
+    "server": "nodemon --exec \"ts-node\" server/server.ts --ext ts,json --watch server",
     "test": "ng test",
-    "lint": "ng lint",
-    "server": "nodemon --exec \"ts-node\" server/server.ts --ext ts,json --watch server"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {

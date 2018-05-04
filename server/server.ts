@@ -4,10 +4,18 @@ const app = express();
 
 const orders = require('./data/orders.json');
 
+// Enable CORS
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.get('/orders', (req, res) => {
   const page = req.query.page ? Math.max(1, req.query.page) : 1;
 
   const items = orders.slice(100 * page, 100 * (page + 1));
+
   res.send({
     page: page,
     pageSize: 100,
@@ -17,4 +25,4 @@ app.get('/orders', (req, res) => {
   });
 });
 
-app.listen(4300, () => console.log('Example app listening on port 4300!'));
+app.listen(4300, () => console.log('Server active on port 4300!'));
