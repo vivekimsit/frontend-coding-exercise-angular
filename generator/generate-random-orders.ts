@@ -7,7 +7,7 @@ import { DRIVERS } from './drivers';
 export const generateRandomOrders = (count: number, seed: number = Math.floor(Math.random() * 1000000)): any[] => {
   const random = new Random(seed);
 
-  const randomFrom = (list: string[]) => list[random.next(0, list.length - 1)];
+  const randomFrom = <T>(list: T[]) => list[random.next(0, list.length - 1)];
   const randomDate = (now: moment.Moment, daysInPast: number, daysInFuture: number) => now.clone()
     .add(random.next(daysInPast, daysInFuture), 'days')
     .startOf('minute')
@@ -25,24 +25,43 @@ export const generateRandomOrders = (count: number, seed: number = Math.floor(Ma
   };
 
   const randomOrder = (lastId: number) => {
-    const now = moment();
+    const now = moment('2018-05-01T10:00:00Z');
 
     const price = Math.floor((random.next(50, 300000) + random.next(0, 300000) + random.next(0, 300000)) / 5) * 5 / 100;
-    const delivery = [0, 5, 15, 15, 15, 20, 25][random.next(0, 6)];
+    const vat = randomFrom([0, 10, 15, 20]);
+    const vatableItems = randomFrom([0, 0.4, 0.8, 1]);
+    const vatablePrice = price * vatableItems;
+    const vatAmount = vat * vatablePrice / 100;
+    const delivery = randomFrom([0, 5, 15, 15, 15, 20, 25]);
     const deliveryDate = randomDate(now, -300, 100);
     const deliveredAt = deliveryDate.isBefore(now) ? deliveryDate.clone().add(random.next(-15 * 60, 5 * 3600), 'seconds') : null;
+    const lastModified = now.clone().add(random.next(-10 * 7 * 24 * 3600, 0), 'seconds');
+    const late = random.next(1, 10) < 3;
+    const delayMinutes = late ? random.next(1, 25) : 0;
+    const lateReason = late && random.next(1, 10) < 8 ?
+      randomFrom(['VENDOR_LATE', 'TRAFFIC', 'DRIVER_LATE_FOR_PICKUP', 'BAD_INSTRUCTIONS']) : null;
     const id = lastId + random.next(0, 100);
     const order = {
       id,
+      lastModified,
       customer: randomFrom(CUSTOMERS),
       vendor: randomFrom(VENDORS),
       requestedDeliveryDate: deliveryDate,
       price: {
         delivery,
         items: price,
-        total: delivery + price
+        total: delivery + price,
+        vatRate: vat,
+        vatableItems: vatablePrice,
+        vatAmount
       },
+      paymentType: randomFrom(['CARD', 'CASH', 'PAY_ON_ACCOUNT']),
+      headcount: random.next(15, 200),
+      servingStyle: randomFrom(['BUFFET', 'INDIVIDUAL_PORTIONS']),
       deliveredAt,
+      delayMinutes,
+      lateReason,
+      packaging: randomFrom(['HOTBOX', 'COLDBOX', 'VENDOR_PROVIDED']),
       driverName: randomFrom(DRIVERS),
       deliveryLocation: randomLatLong(),
       currentLocation: randomLatLong(),
@@ -51,10 +70,10 @@ export const generateRandomOrders = (count: number, seed: number = Math.floor(Ma
     return order;
   };
 
-  let id = random.next(1000, 5000);
+  let runningId = random.next(1000, 5000);
   return Array(count).fill(null).map(() => {
-    const order = randomOrder(id);
-    id = order.id;
+    const order = randomOrder(runningId);
+    runningId = order.id;
     return order;
   });
 };
