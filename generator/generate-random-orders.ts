@@ -35,6 +35,7 @@ export const generateRandomOrders = (count: number, seed: number = Math.floor(Ma
     const delivery = randomFrom([0, 5, 15, 15, 15, 20, 25]);
     const deliveryDate = randomDate(now, -300, 100);
     const deliveredAt = deliveryDate.isBefore(now) ? deliveryDate.clone().add(random.next(-15 * 60, 5 * 3600), 'seconds') : null;
+    const commissionRate = randomFrom([0.1, 0.12, 0.15, 0.17, 0.2, 0.99]);
     const lastModified = now.clone().add(random.next(-10 * 7 * 24 * 3600, 0), 'seconds');
     const late = random.next(1, 10) < 3;
     const delayMinutes = late ? random.next(1, 25) : 0;
@@ -46,6 +47,7 @@ export const generateRandomOrders = (count: number, seed: number = Math.floor(Ma
       lastModified,
       customer: randomFrom(CUSTOMERS),
       vendor: randomFrom(VENDORS),
+      commissionRate,
       requestedDeliveryDate: deliveryDate,
       price: {
         delivery,

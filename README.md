@@ -1,5 +1,5 @@
 # CityPantry Frontend Coding Exercise - Angular
-This is a coding exercise written in Angular.
+This is a coding exercise written in [Angular 5](https://angular.io/docs).
 
 In this exercise you will write a simple frontend application
 interfacing with the backend provided.
@@ -10,14 +10,19 @@ Software Design Patterns and Testing.
 This exercise is not time bounded.
 
 ## Requirements
-You should provide an implementation of the `/orders` page which, on load,
-fetches the data from the backend endpoint and displays it in an
-appropriate format.
+The API endpoint at `/orders` returns order objects.
+The `/orders` page on the frontend should display these objects for
+consumption by a customer service representative who will use it
+to liaise with customers.
+
+You should provide an implementation of the `/orders` page which,
+on load, fetches the data from the backend endpoint and displays it
+in an appropriate format.
 Not all the data may be required - you should decide which parts
 of the data should be displayed.
 
-The resulting page should work well but does not need to styled
-beyond what is required for a user to easily grasp the data.
+The resulting page should be functional and easy to use but does not
+need to styled beyond what is required for a user to easily grasp the data.
 
 ## Additional Notes
 Complete the exercise using TypeScript, HTML, and SASS/CSS.
@@ -25,14 +30,14 @@ Complete the exercise using TypeScript, HTML, and SASS/CSS.
 Structure your code as if this was a real, production application.
 You may however choose to provide simplified implementations or
 skip them entirely for some aspects (such as error handling,
-or cross-device support) if you feel it is necessary.
+or cross-device support) if you feel it is necessary. In such situations
+add a comment in the code explaining what you have simplified or skipped
+and what a full implementation would consist of.
 
 State any assumptions you make as comments in the codebase.
-If any aspects of the above specification is unclear then please also
+If any aspect of the above specification is unclear then please also
 state, as comments in the source, your interpretation of the requirement.
 
-You should provide sufficient evidence that your solution is complete by,
-as a minimum, indicating that it works correctly against the supplied data.
 You are encouraged to write any tests you may feel are necessary or helpful,
 but to save you time, end-to-end tests are discouraged.
 

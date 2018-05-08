@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 app.get('/orders', (req, res) => {
   const page = req.query.page ? Math.max(1, req.query.page) : 1;
 
-  const items = orders.slice(100 * page, 100 * (page + 1));
+  const items = orders.slice(100 * (page - 1), 100 * page);
 
   res.send({
     page: page,
