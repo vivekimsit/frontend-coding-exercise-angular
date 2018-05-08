@@ -1,7 +1,7 @@
-# CityPantry Frontend Coding Challenge - Angular
-This is a coding challenge written in Angular.
+# CityPantry Frontend Coding Exercise - Angular
+This is a coding exercise written in Angular.
 
-The aim of this challenge is to write a simple frontend application
+In this exercise you will write a simple frontend application
 interfacing with the backend provided.
 
 The purpose of the exercise is to evaluate your approach to software
@@ -16,7 +16,7 @@ appropriate format.
 Not all the data may be required - you should decide which parts
 of the data should be displayed.
 
-The resulting page should work well but does not need to styled beautifully
+The resulting page should work well but does not need to styled
 beyond what is required for a user to easily grasp the data.
 
 ## Additional Notes
@@ -61,6 +61,4 @@ yarn test
 ```
 This runs tests for the frontend.
 
-Tests for the backend are not required.
-
-E2E tests are out of scope.
+You should not write tests for the backend or E2E tests.
