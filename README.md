@@ -41,7 +41,9 @@ state, as comments in the source, your interpretation of the requirement.
 You are encouraged to write any tests you may feel are necessary or helpful,
 but to save you time, end-to-end tests are discouraged.
 
-You are free to install any node packages you require to complete this task.
+You are free to install any node packages or CSS libraries (such as bootstrap 
+or Material Design) you require to complete this task, but you may not use
+UI component libraries such as Material2, PrimeNG or ng-bootstrap.
 
 ## Development
 ```bash
