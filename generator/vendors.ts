@@ -12,7 +12,7 @@ export const VENDORS = [
   'Lizzi',
   'Pizza the Hutt',
   'Gnomesbake',
-  'Batty and Pun',
+  'Patty and Pun',
   'Uncle Moe’s Family Feedbag',
   'JUMP Vietnamese',
   'Los Pollos Hermanos',
