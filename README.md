@@ -48,11 +48,14 @@ or Material Design) you require to complete this task, but you may not use
 UI component libraries such as Material2, PrimeNG or ng-bootstrap.
 
 ## Development
+You will need to use the [Yarn Package Manager](https://yarnpkg.com).
+After installing, run the following commands in the root directory to start developing:
+
 ```bash
-# Setup
+# Install dependencies and set up the server
 yarn install
 
-# Live-reloading development server at localhost:4200 and localhost:4300
+# Starts the live-reloading development servers at localhost:4200 (frontend) and localhost:4300 (API)
 yarn start
 ```
 
