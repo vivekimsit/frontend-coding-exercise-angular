@@ -45,7 +45,8 @@ but to save you time, end-to-end tests are discouraged.
 
 You are free to install any node.js packages or CSS libraries (such as bootstrap 
 or Material Design) you require to complete this task, but you may not use
-UI component libraries such as Material2, PrimeNG or ng-bootstrap.
+UI component libraries such as Material2, PrimeNG or ng-bootstrap,
+or third-party pagination or data table modules.
 
 ## Development
 You will need to use the [Yarn Package Manager](https://yarnpkg.com).
