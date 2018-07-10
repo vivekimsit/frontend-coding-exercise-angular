@@ -1,4 +1,4 @@
-# City Pantry Frontend Coding Exercise - Angular
+# City Pantry Frontend/Angular coding challenge
 This is a coding exercise written in [Angular 5](https://angular.io/docs).
 
 In this exercise you will write a simple frontend application
