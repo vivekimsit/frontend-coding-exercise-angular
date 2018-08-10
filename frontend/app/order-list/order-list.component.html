@@ -1,18 +1,14 @@
 <h1>Orders</h1>
-<div class=""
-  [hidden]="!loading">
+<div [hidden]="!loading">
   Loading orders...
 </div>
-<div class="app-order-preview"
-  [hidden]="loading || orders.length">
+<div [hidden]="loading || orders.length">
   No orders are here... yet.
 </div>
-<ul>
-  <li *ngFor="let order of orders">
-    <app-order-preview [order]="order">
-    </app-order-preview>
-  </li>
-</ul>
+<app-order-preview
+  *ngFor="let order of orders"
+  [order]="order">
+</app-order-preview>
 <nav [hidden]="loading || totalPages.length <= 1">
   <ul class="pagination">
     <li class="page-item"
