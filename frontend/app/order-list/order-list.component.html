@@ -3,9 +3,23 @@
   [hidden]="!loading">
   Loading orders...
 </div>
+<div class="app-order-preview"
+  [hidden]="loading || orders.length">
+  No orders are here... yet.
+</div>
 <ul>
   <li *ngFor="let order of orders">
     <app-order-preview [order]="order">
     </app-order-preview>
   </li>
 </ul>
+<nav [hidden]="loading || totalPages.length <= 1">
+  <ul class="pagination">
+    <li class="page-item"
+      [ngClass]="{'active': pageNumber === currentPage}"
+      *ngFor="let pageNumber of totalPages"
+      (click)="setPageTo(pageNumber)">
+      <a class="page-link" >{{ pageNumber }}</a>
+    </li>
+  </ul>
+</nav>

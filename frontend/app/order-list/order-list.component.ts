@@ -37,6 +37,7 @@ export class OrderListComponent implements OnInit {
       .subscribe(data => {
         this.loading = false;
         this.orders = data.items;
+        this.totalPages = [1, 2];
       });
   }
 }
