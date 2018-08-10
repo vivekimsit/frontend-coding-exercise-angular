@@ -7,8 +7,10 @@ import { AppComponent } from './app.component';
 import { AppRouterModule } from './app.router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { OrderPageComponent } from './order-list/order-page.component';
 import { OrderPreviewComponent } from './order-list/order-preview.component';
 import { OrderListService } from './order-list/order-list.service';
+import { OrderResolver } from './order-list/order-resolver.service';
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { OrderListService } from './order-list/order-list.service';
     AppComponent,
     HomepageComponent,
     OrderListComponent,
+    OrderPageComponent,
     OrderPreviewComponent,
   ],
   imports: [
@@ -25,6 +28,7 @@ import { OrderListService } from './order-list/order-list.service';
   ],
   providers: [
     OrderListService,
+    OrderResolver,
   ],
   bootstrap: [AppComponent]
 })

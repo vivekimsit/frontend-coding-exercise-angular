@@ -14,7 +14,13 @@ export class OrderListService {
 
   query(): Observable<{items: Order[], page: number, pageSize: number, total: number, count: number}> {
     return this.http
-    .get(`${environment.api_url}/orders`)
+      .get(`${environment.api_url}/orders`)
+      .pipe(catchError(this.formatErrors));
+  }
+
+  get(id: number): Observable<{order: Order}> {
+    return this.http
+      .get(`${environment.api_url}/orders/${id}`)
       .pipe(catchError(this.formatErrors));
   }
 
