@@ -1,7 +1,10 @@
 <h1>Orders</h1>
-
-<table>
-  <td>
-    No orders loaded.
-  </td>
-</table>
+<div class=""
+  [hidden]="!loading">
+  Loading orders...
+</div>
+<ul>
+  <li *ngFor="let order of orders">
+    {{ order.id }}
+  </li>
+</ul>
