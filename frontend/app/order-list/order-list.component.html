@@ -5,6 +5,7 @@
 </div>
 <ul>
   <li *ngFor="let order of orders">
-    {{ order.id }}
+    <app-order-preview [order]="order">
+    </app-order-preview>
   </li>
 </ul>

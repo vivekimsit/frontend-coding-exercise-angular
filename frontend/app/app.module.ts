@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRouterModule } from './app.router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { OrderListComponent } from './order-list/order-list.component';
+import { OrderPreviewComponent } from './order-list/order-preview.component';
 import { OrderListService } from './order-list/order-list.service';
 
 
@@ -15,6 +16,7 @@ import { OrderListService } from './order-list/order-list.service';
     AppComponent,
     HomepageComponent,
     OrderListComponent,
+    OrderPreviewComponent,
   ],
   imports: [
     BrowserModule,
