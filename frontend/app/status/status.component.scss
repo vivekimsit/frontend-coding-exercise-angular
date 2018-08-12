@@ -1,0 +1,22 @@
+.status {
+  font-weight: bold;
+  font-size: 0.750em;
+  border-radius: 3px;
+  border: 1px solid;
+  height: 1em;
+  line-height: 1em;
+  padding: 1px 2px;
+  text-transform: uppercase;
+}
+
+.status.progress {
+  color: goldenrod;
+}
+
+.status.cancelled {
+  color: red;
+}
+
+.status.delivered {
+  color: green;
+}

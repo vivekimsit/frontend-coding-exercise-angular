@@ -5,6 +5,7 @@
 <div *ngIf="!loading && !orders.length">
   No orders are here... yet.
 </div>
-<div *ngIf="!loading">
+<div *ngIf="!loading" class="container">
+  <h1>Orders</h1>
   <app-order-list [orders]="orders"></app-order-list>
 </div>

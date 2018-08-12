@@ -13,6 +13,7 @@ import { OrderPreviewComponent } from './order-list/order-preview.component';
 import { OrderListService } from './order-list/order-list.service';
 import { OrderResolver } from './order-list/order-resolver.service';
 import { FiltersCmp } from './filters/filters';
+import { StatusComponent } from './status/status.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { FiltersCmp } from './filters/filters';
     OrderPageComponent,
     OrderPreviewComponent,
     FiltersCmp,
+    StatusComponent,
   ],
   imports: [
     BrowserModule,

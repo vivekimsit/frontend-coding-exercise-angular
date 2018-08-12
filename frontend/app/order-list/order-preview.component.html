@@ -2,7 +2,7 @@
   <a [routerLink]="['/order', order.id]" class="preview-link">
     <h1>{{ order.customer }}</h1>
     <p>{{ order.vendor }}</p>
-    <p>Status: {{ status }}</p>
+    <app-status [status]="status"></app-status>
     <p *ngIf="isDelayed">
       Delay: {{ order.delayMinutes }} min
     </p>

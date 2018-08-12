@@ -8,6 +8,7 @@ import { Filters } from "../models";
 @Component({
   selector: 'app-filter-and-orders',
   templateUrl: './filter-and-orders.component.html',
+  styleUrls: ['./filter-and-orders.scss']
 })
 export class FilterAndOrders {
   constructor (
@@ -45,7 +46,6 @@ export class FilterAndOrders {
     if (status) r.status = status;
     if (customer) r.customer = customer;
     if (vendor) r.vendor = vendor;
-    console.log(r);
     return r;
   }
 }
