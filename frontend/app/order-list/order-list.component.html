@@ -1,10 +1,4 @@
 <h1>Orders</h1>
-<div [hidden]="!loading">
-  Loading orders...
-</div>
-<div [hidden]="loading || orders.length">
-  No orders are here... yet.
-</div>
 <app-order-preview
   *ngFor="let order of orders"
   [order]="order">

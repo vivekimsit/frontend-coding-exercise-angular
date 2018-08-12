@@ -1,7 +1,10 @@
 <div class="order-preview">
   <a [routerLink]="['/order', order.id]" class="preview-link">
     <h1>{{ order.customer }}</h1>
-    <p>{{ order.driverName }}</p>
-    <span>Read more...</span>
+    <p>{{ order.vendor }}</p>
+    <p>Status: {{ status }}</p>
+    <p *ngIf="isDelayed">
+      Delay: {{ order.delayMinutes }} min
+    </p>
   </a>
 </div>

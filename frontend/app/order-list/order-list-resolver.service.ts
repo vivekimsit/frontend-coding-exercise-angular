@@ -1,6 +1,7 @@
 import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 import { Order } from '../models';
 import { catchError } from 'rxjs/operators/catchError';
@@ -18,8 +19,7 @@ export class OrderListResolver implements Resolve<Order[]> {
     state: RouterStateSnapshot
   ): Observable<any> {
 
-    return this.ordersService
-      .query()
-      .pipe(catchError((err) => this.router.navigateByUrl('/')));
+    //return this.ordersService.orders;
+    return Observable.of(true);
   }
 }

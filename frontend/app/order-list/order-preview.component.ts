@@ -1,11 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
-import { Order } from '../models';
+import { Order, Status } from '../models';
 
 @Component({
   selector: 'app-order-preview',
   templateUrl: './order-preview.component.html'
 })
-export class OrderPreviewComponent {
+export class OrderPreviewComponent implements OnInit {
   @Input() order: Order;
+
+  status: Status;
+
+  ngOnInit() {
+    this.status = !!this.order.deliveredAt ? Status.Progress : Status.Delivered;
+  }
+
+  get isDelayed(): boolean {
+    return this.status === Status.Progress && this.order.delayMinutes !== 0;
+  }
 }

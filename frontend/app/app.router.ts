@@ -4,11 +4,12 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderPageComponent } from './order-list/order-page.component';
 import { OrderResolver } from './order-list/order-resolver.service';
+import { FilterAndOrders } from './order-list/filter-and-orders.component';
 
 const appRoutes: Routes = [
   {
     path: 'orders',
-    component: OrderListComponent
+    component: FilterAndOrders
   },
   {
     path: 'orders/:id',
