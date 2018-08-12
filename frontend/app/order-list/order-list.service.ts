@@ -25,6 +25,15 @@ export class OrderListService {
       .subscribe(data => {
         this.loading = false;
         this._orders = data.items;
+        console.log(this._orders.length);
+        if (this.filters.customer) {
+          this._orders = this.filterBy('customer', this.filters.customer);
+        }
+        console.log(this._orders.length);
+        if (this.filters.vendor) {
+          this._orders = this.filterBy('vendor', this.filters.vendor);
+        }
+        console.log(this._orders.length);
       });
   }
 
@@ -37,6 +46,12 @@ export class OrderListService {
   changeFilters(filters: Filters): void {
     this.filters = filters;
     this.refetch();
+  }
+
+  private filterBy(field: string, value: string): Order[] {
+    return this._orders.filter(o => {
+      return o[field].toLowerCase().includes(value.toLowerCase());
+    });
   }
 
   get orders(): Order[] {
