@@ -13,10 +13,6 @@ export class OrderPreviewComponent implements OnInit {
   status: Status;
 
   ngOnInit() {
-    this.status = !!this.order.deliveredAt ? Status.Progress : Status.Delivered;
-  }
-
-  get isDelayed(): boolean {
-    return this.status === Status.Progress && this.order.delayMinutes !== 0;
+    this.status = !!this.order.deliveredAt ? Status.Delivered : Status.Progress;
   }
 }

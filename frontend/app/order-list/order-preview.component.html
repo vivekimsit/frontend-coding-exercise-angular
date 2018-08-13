@@ -17,7 +17,10 @@
   </div>
   <div class="preview-status">
     <app-status [status]="status"></app-status>
-    <span *ngIf="isDelayed" style="margin: 2px 0;font-size: 0.7rem;">
+    <span *ngIf="!!order.deliveredAt" style="margin: 2px 0;font-size: 0.7rem;">
+      Delivered At: {{ order.deliveredAt }}
+    </span>
+    <span *ngIf="!!order.delayMinutes" style="margin: 2px 0;font-size: 0.7rem;">
       Delay: {{ order.delayMinutes }} mins
     </span>
   </div>

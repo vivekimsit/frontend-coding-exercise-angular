@@ -1,11 +1,11 @@
-<filters-cmp [filters]="filters" (filtersChange)="handleFiltersChange($event)"></filters-cmp>
 <div *ngIf="loading">
   Loading orders...
 </div>
-<div *ngIf="!loading && !orders.length">
-  No orders are here... yet.
-</div>
 <div *ngIf="!loading" class="container">
+  <filters-cmp [filters]="filters" (filtersChange)="handleFiltersChange($event)"></filters-cmp>
+  <div *ngIf="!loading && !orders.length">
+    No orders are here... yet.
+  </div>
   <h1>Orders Tracking</h1>
   <app-order-list [orders]="orders"></app-order-list>
 </div>
