@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from "@angular/router";
 
-import { Order } from '../models';
-import { OrderListService } from './order-list.service';
-import { Filters } from "../models";
+import { Filters, Order } from '../models';
+import { OrdersService } from './orders.service';
 
 @Component({
   selector: 'app-filter-and-orders',
@@ -11,14 +10,18 @@ import { Filters } from "../models";
   styleUrls: ['./filter-and-orders.scss']
 })
 export class FilterAndOrders {
+  currentPage = 1;
+  totalPages  = [1, 2];
+
   constructor (
-    private ordersService: OrderListService,
+    private ordersService: OrdersService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    route.params.subscribe((p:any) => {
-      const {status, customer, vendor} = p;
-      const filters = {status: status || null, customer: customer || null, vendor: vendor || null};
+    route.queryParams.subscribe((p:any) => {
+      const {orderId=null, customer=null, vendor=null, page=1} = p;
+      const filters = { orderId, customer, vendor, page };
+      this.currentPage = page;
       this.ordersService.changeFilters(filters);
     });
   }
@@ -40,10 +43,22 @@ export class FilterAndOrders {
     this.router.navigate(['/orders'], { queryParams: this.createParams(filters) });
   }
 
+  handlePageChange(page: number) {
+    this.currentPage = page;
+    const params = this.route.snapshot.queryParams;
+    this.router.navigate(['/orders'], { queryParams: this.createParams({
+      orderId: params.orderId,
+      customer: params.customer,
+      vendor: params.vendor,
+      page: params.page,
+    })});
+  }
+
   private createParams(filters: Filters): Params {
     const r:any = {};
-    const {status, customer, vendor} = filters;
-    if (status) r.status = status;
+    const {orderId, customer, vendor, page} = filters;
+    if (page) r.page = page;
+    if (orderId) r.orderId = orderId;
     if (customer) r.customer = customer;
     if (vendor) r.vendor = vendor;
     return r;

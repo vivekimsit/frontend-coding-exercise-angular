@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Order } from '../models';
-import { OrderListService } from './order-list.service';
+import { Order } from '../../models';
 
 @Component({
   selector: 'app-order-page',
@@ -14,7 +13,6 @@ export class OrderPageComponent implements OnInit {
 
   constructor (
     private route: ActivatedRoute,
-    private ordersService: OrderListService,
     private router: Router
   ) {}
 

@@ -1,0 +1,46 @@
+:host {
+  padding: 10px;
+  display: flex;
+}
+
+.filters {
+  display: flex;
+  flex-grow: 1;
+}
+
+.filters input {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #bfcbd9;
+  color: #1f2d3d;
+  display: block;
+  font-size: inherit;
+  height: 36px;
+  line-height: 1;
+  padding: 3px 10px;
+  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+  width: 100%;
+  margin: 0 5px;
+}
+
+.filters button {
+  display: inline-flex;
+  padding: 0 1rem;
+  height: 2.8125rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #2a2d3a;
+  border-radius: 0;
+  color: #2a2d3a;
+  text-decoration: none;
+  letter-spacing: 3px;
+  font-weight: 500;
+  transition: all .3s;
+  font-size: .75rem;
+  font-family: Radikal,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all .3s;
+  cursor: pointer;
+}

@@ -9,19 +9,11 @@
     <div class="preview-row">
       <span class="preview-text">{{ order.customer }}</span>
     </div>
-    <div class="preview-row">
-      <a [routerLink]="['/order', order.id]" class="preview-link">
-        Details
-      </a>
-    </div>
   </div>
   <div class="preview-status">
     <app-status [status]="status"></app-status>
-    <span *ngIf="!!order.deliveredAt" style="margin: 2px 0;font-size: 0.7rem;">
-      Delivered At: {{ order.deliveredAt }}
-    </span>
-    <span *ngIf="!!order.delayMinutes" style="margin: 2px 0;font-size: 0.7rem;">
+    <p *ngIf="!!order.delayMinutes" style="margin: 2px 0;font-size: 0.7rem;">
       Delay: {{ order.delayMinutes }} mins
-    </span>
+    </p>
   </div>
 </div>

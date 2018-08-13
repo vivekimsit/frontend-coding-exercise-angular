@@ -1,5 +1,6 @@
 export interface Filters {
-  status: string;
+  orderId: string;
   customer: string;
   vendor: string;
+  page: number;
 }

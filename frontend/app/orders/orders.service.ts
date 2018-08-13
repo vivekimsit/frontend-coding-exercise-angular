@@ -11,30 +11,32 @@ import { catchError } from 'rxjs/operators/catchError';
 import { Filters } from "../models";
 
 @Injectable()
-export class OrderListService {
-  filters: Filters = { status: null, customer: null, vendor: null };
+export class OrdersService {
+  filters: Filters = { orderId: null, customer: null, vendor: null, page: 1 };
   _orders: Order[];
   loading: boolean = true;
+  currentPage: number = 1;
+  totalPages: Array<number> = [1];
 
   constructor (private http: HttpClient) {}
 
-  query(params: HttpParams): void {
+  query(filters): void {
     this.http
-      .get(`${environment.api_url}/orders`, { params })
-      .pipe(catchError(this.formatErrors))
-      .subscribe(data => {
-        this.loading = false;
-        this._orders = data.items;
-        console.log(this._orders.length);
-        if (this.filters.customer) {
-          this._orders = this.filterBy('customer', this.filters.customer);
-        }
-        console.log(this._orders.length);
-        if (this.filters.vendor) {
-          this._orders = this.filterBy('vendor', this.filters.vendor);
-        }
-        console.log(this._orders.length);
-      });
+    .get(`${environment.api_url}/orders`, {params: filters})
+    .pipe(catchError(this.formatErrors))
+    .subscribe(data => {
+      this.loading = false;
+      this._orders = data.items;
+      if (this.filters.orderId) {
+        this._orders = this.filterBy('id', this.filters.orderId);
+      }
+      if (this.filters.customer) {
+        this._orders = this.filterBy('customer', this.filters.customer);
+      }
+      if (this.filters.vendor) {
+        this._orders = this.filterBy('vendor', this.filters.vendor);
+      }
+    });
   }
 
   get(id: number): Observable<{order: Order}> {
@@ -50,7 +52,7 @@ export class OrderListService {
 
   private filterBy(field: string, value: string): Order[] {
     return this._orders.filter(o => {
-      return o[field].toLowerCase().includes(value.toLowerCase());
+      return (''+o[field]).toLowerCase().includes(value.toLowerCase());
     });
   }
 
@@ -59,15 +61,18 @@ export class OrderListService {
   }
 
   private refetch(): void {
-    const params = new HttpParams();
-    const { status, customer, vendor } = this.filters;
-    params.set("status", status);
-    params.set("customer", customer);
-    params.set("vendor", vendor);
-    this.query(params);
+    const r:any = {};
+
+    const {orderId, customer, vendor, page} = this.filters;
+    if (customer != null) r.customer = customer;
+    if (orderId != null) r.orderId = orderId;
+    if (page != null) r.page = page;
+    if (vendor != null) r.vendor = vendor;
+    this.query(this.filters);
   }
 
   private formatErrors(error: any) {
     return new ErrorObservable(error.error);
   }
 }
+

@@ -4,12 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators/catchError';
 
 import { Order } from '../models';
-import { OrderListService } from './order-list.service';
+import { OrdersService } from './orders.service';
 
 @Injectable()
 export class OrderResolver implements Resolve<Order> {
   constructor(
-    private ordersService: OrderListService,
+    private ordersService: OrdersService,
     private router: Router,
   ) {}
 

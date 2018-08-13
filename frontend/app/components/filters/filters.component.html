@@ -1,5 +1,7 @@
 <div class="filters" [formGroup]="filtersForm">
-  <input formControlName="status" placeholder="Status">
+  <!--input formControlName="status" placeholder="Status"-->
+  <input formControlName="orderId" placeholder="#ID">
   <input formControlName="vendor" placeholder="Vendor/From">
   <input formControlName="customer" placeholder="Customer/To">
+  <button (click)="handleReset()">Reset</button>
 </div>
