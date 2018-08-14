@@ -50,7 +50,7 @@ export class FilterAndOrders {
       orderId: params.orderId,
       customer: params.customer,
       vendor: params.vendor,
-      page: params.page,
+      page,
     })});
   }
 

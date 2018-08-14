@@ -4,8 +4,8 @@
 <div *ngIf="loading">
   Loading orders...
 </div>
-<div [hidden]="loading" class="container">
-  <filters-cmp [filters]="filters" (filtersChange)="handleFiltersChange($event)"></filters-cmp>
+<filters-cmp [filters]="filters" (filtersChange)="handleFiltersChange($event)"></filters-cmp>
+<div [hidden]="loading" class="orders">
   <div [hidden]="!loading && orders.length">
     No orders are here... yet.
   </div>

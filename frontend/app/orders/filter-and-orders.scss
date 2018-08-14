@@ -1,3 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.orders {
+  max-height: 700px;
+  height: 700px;
+  overflow: scroll;
+  width: 500px;
+}
+
 header {
   line-height: 60px;
   height: 60px;
@@ -7,13 +21,6 @@ header {
   position: sticky;
   top: 0;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0.5rem 0 1rem 0;
 }
 
 .pagination {

@@ -1,19 +1,21 @@
 <div class="order-preview">
-  <div class="preview-meta">
+  <div class="border-left">
     <div class="preview-row">
       ID: #{{ order.id }}
+      <div class="preview-status">
+        <app-status [status]="status"></app-status>
+        <p *ngIf="!!order.delayMinutes" style="margin: 2px 0;font-size: 0.7rem;">
+          Delay: {{ order.delayMinutes }} mins
+        </p>
+      </div>
     </div>
     <div class="preview-row">
       <span class="preview-text">{{ order.vendor }}</span>
     </div>
     <div class="preview-row">
       <span class="preview-text">{{ order.customer }}</span>
+      <span *ngIf="!!order.deliveredAt" class="preview-text small">{{ order.requestedDeliveryDate | date:'short'}}</span>
+      <span *ngIf="!order.deliveredAt" class="preview-text small dim">{{ order.requestedDeliveryDate | date:'short'}}</span>
     </div>
-  </div>
-  <div class="preview-status">
-    <app-status [status]="status"></app-status>
-    <p *ngIf="!!order.delayMinutes" style="margin: 2px 0;font-size: 0.7rem;">
-      Delay: {{ order.delayMinutes }} mins
-    </p>
   </div>
 </div>
