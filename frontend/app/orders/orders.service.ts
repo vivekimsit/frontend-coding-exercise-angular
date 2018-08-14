@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Order } from '../models';
+import { Order, OrdersDetail } from '../models';
 import { map } from 'rxjs/operators/map';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators/catchError';
@@ -13,10 +13,8 @@ import { Filters } from "../models";
 @Injectable()
 export class OrdersService {
   filters: Filters = { orderId: null, customer: null, vendor: null, page: 1 };
-  _orders: Order[];
+  _orders: OrdersDetail[];
   loading: boolean = true;
-  currentPage: number = 1;
-  totalPages: Array<number> = [1];
 
   constructor (private http: HttpClient) {}
 
@@ -24,9 +22,9 @@ export class OrdersService {
     this.http
     .get(`${environment.api_url}/orders`, {params: filters})
     .pipe(catchError(this.formatErrors))
-    .subscribe(data => {
+    .subscribe((data:OrdersDetail) => {
       this.loading = false;
-      this._orders = data.items;
+      this._orders = data;
       if (this.filters.orderId) {
         this._orders = this.filterBy('id', this.filters.orderId);
       }
@@ -56,7 +54,7 @@ export class OrdersService {
     });
   }
 
-  get orders(): Order[] {
+  get orders(): OrdersDetail {
     return this._orders;
   }
 

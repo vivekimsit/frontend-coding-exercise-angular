@@ -11,7 +11,6 @@ import { OrdersService } from './orders.service';
 })
 export class FilterAndOrders {
   currentPage = 1;
-  totalPages  = [1, 2];
 
   constructor (
     private ordersService: OrdersService,
@@ -35,6 +34,11 @@ export class FilterAndOrders {
   }
 
   get orders(): Order[] {
+    return this.ordersService.orders.items;
+  }
+
+  get pages(): number[] {
+    const { total } = this.ordersService.total;
     return this.ordersService.orders;
   }
 

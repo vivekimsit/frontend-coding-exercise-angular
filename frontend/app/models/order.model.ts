@@ -32,3 +32,11 @@ export interface Order {
   currentLocation: Location;
   vendorLocation: Location;
 }
+
+export interface OrdersDetail {
+  count: number;
+  items: Order[];
+  page: number;
+  pageSize: number;
+  total: number;
+}

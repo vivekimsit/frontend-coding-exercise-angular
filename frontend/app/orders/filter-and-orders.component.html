@@ -11,12 +11,13 @@
   </div>
   <app-order-list [orders]="orders"></app-order-list>
 </div>
-<nav [hidden]="loading || totalPages.length <= 1">
+<nav [hidden]="loading || pages.length <= 1">
+  Showing Page {{ currentPage }} of {{ pages.length }}
   <ul class="pagination">
     <li class="page-item"
-        [ngClass]="{'active': pageNumber == currentPage}"
-        *ngFor="let pageNumber of totalPages">
-      <a class="page-link" (click)="handlePageChange(pageNumber)">{{ pageNumber }}</a>
+        [ngClass]="{'active': page == currentPage}"
+        *ngFor="let page of pages">
+      <a class="page-link" (click)="handlePageChange(pageNumber)">{{ page }}</a>
     </li>
   </ul>
 </nav>
