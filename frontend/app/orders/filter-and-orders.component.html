@@ -1,23 +1,20 @@
 <header>
   City Pantry &gt; Order Tracking
 </header>
-<div *ngIf="loading">
-  Loading orders...
-</div>
-<filters-cmp [filters]="filters" (filtersChange)="handleFiltersChange($event)"></filters-cmp>
-<div [hidden]="loading" class="orders">
-  <div [hidden]="!loading && orders.length">
-    No orders are here... yet.
-  </div>
-  <app-order-list [orders]="orders"></app-order-list>
-</div>
-<nav [hidden]="loading || pages.length <= 1">
-  Showing Page {{ currentPage }} of {{ pages.length }}
+<filters-cmp
+  [filters]="ordersService.filters"
+  (filtersChange)="handleFiltersChange($event)"></filters-cmp>
+<app-order-list
+  class="orders"
+  [orders]="ordersService.orders"></app-order-list>
+
+<nav [hidden]="ordersService.pages?.length <= 1" >
   <ul class="pagination">
+    <p style="margin-right: 5px;">Showing Page {{ currentPage }} of {{ ordersService.pages.length }}</p>
     <li class="page-item"
         [ngClass]="{'active': page == currentPage}"
-        *ngFor="let page of pages">
-      <a class="page-link" (click)="handlePageChange(pageNumber)">{{ page }}</a>
+        *ngFor="let page of ordersService.pages">
+      <a class="page-link" (click)="handlePageChange(page)">{{ page }}</a>
     </li>
   </ul>
 </nav>

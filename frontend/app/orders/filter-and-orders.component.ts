@@ -25,23 +25,6 @@ export class FilterAndOrders {
     });
   }
 
-  get filters(): Filters {
-    return this.ordersService.filters;
-  }
-
-  get loading(): boolean {
-    return this.ordersService.loading;
-  }
-
-  get orders(): Order[] {
-    return this.ordersService.orders.items;
-  }
-
-  get pages(): number[] {
-    const { total } = this.ordersService.total;
-    return this.ordersService.orders;
-  }
-
   handleFiltersChange(filters: Filters) {
     this.ordersService.changeFilters(filters);
     this.router.navigate(['/orders'], { queryParams: this.createParams(filters) });
